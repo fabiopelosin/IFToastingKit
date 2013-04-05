@@ -92,6 +92,11 @@ NSString *const kIFToastingRoomStreamClientBaseURL = @"https://streaming.campfir
 #pragma mark NSURLConnectionDelegate
 ///-----------------------------------------------------------------------------
 
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response;
+{
+  // TODO: call success block.
+}
+
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
 	SBJsonStreamParserStatus status = [self.parser parse:data];
 

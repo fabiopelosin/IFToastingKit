@@ -54,16 +54,18 @@ static NSString * const kDSCampfireAPIBaseURLString = @"https://%@.campfirenow.c
  */
 
 - (void)authenticateUserWithName:(NSString*)username password:(NSString*)password
-                         success:(void (^)(AFHTTPRequestOperation *operation, IFToastingUser *user))success
-                         failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+                         success:(void (^)(IFToastingUser *user))success
+                         failure:(void (^)(NSError *error))failure;
 {
   [self.apiClient setAuthorizationHeaderWithUsername:username password:password];
   [self.apiClient getPath:@"users/me.json" parameters:nil success:^(AFHTTPRequestOperation *operation, id JSON) {
     IFToastingUser *user = [[IFToastingUser alloc] initWithAttributes:JSON[@"user"]];
     NSString *authorizationToken = JSON[@"user"][@"api_auth_token"];
     [self setAuthorizationToken:authorizationToken];
-    success(operation, user);
-  } failure:failure];
+    success(user);
+  } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    failure(error);
+  }];
 }
 
 /*
@@ -130,14 +132,16 @@ static NSString * const kDSCampfireAPIBaseURLString = @"https://%@.campfirenow.c
  Returns info about the current account.
  */
 
-- (void)getAccountWithsuccess:(void (^)(AFHTTPRequestOperation *operation, IFToastingAccount *account))success
-           failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+- (void)getAccountWithsuccess:(void (^)(IFToastingAccount *account))success
+           failure:(void (^)(NSError *error))failure
 {
   NSString *path = [NSString stringWithFormat:@"account.json"];
   [self.apiClient getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, NSDictionary *accountAttributes) {
     IFToastingAccount *account = [[IFToastingAccount alloc] initWithAttributes:accountAttributes];
-    success(operation, account);
-  } failure:failure];
+    success(account);
+  } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    failure(error);
+  }];
 }
 
 ///-----------------------------------------------------------------------------
@@ -148,28 +152,32 @@ static NSString * const kDSCampfireAPIBaseURLString = @"https://%@.campfirenow.c
  Returns a collection of the rooms that are visible to the authenticated user. 
  */
 
-- (void)getRoomsWithSuccess:(void (^)(AFHTTPRequestOperation *operation, NSArray *rooms))success
-                    failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+- (void)getRoomsWithSuccess:(void (^)(NSArray *rooms))success
+                    failure:(void (^)(NSError *error))failure
 {
   NSString *path = @"rooms.json";
   [self.apiClient getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, NSDictionary *JSON) {
     NSArray *rooms = [self convertJsonToRooms:JSON];
-    success(operation, rooms);
-  } failure:failure];
+    success(rooms);
+  } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    failure(error);
+  }];
 }
 
 /**
  Returns a collection of the rooms that the authenticated user is present in. 
  */
 
-- (void)getPresenceWithSuccess:(void (^)(AFHTTPRequestOperation *operation, NSArray *rooms))success
-                       failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+- (void)getPresenceWithSuccess:(void (^)(NSArray *rooms))success
+                       failure:(void (^)(NSError *error))failure
 {
   NSString *path = @"presence.json";
   [self.apiClient getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, NSDictionary *JSON) {
     NSArray *rooms = [self convertJsonToRooms:JSON];
-    success(operation, rooms);
-  } failure:failure];
+    success(rooms);
+  } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    failure(error);
+  }];
 }
 
 /** 
@@ -177,16 +185,16 @@ static NSString * const kDSCampfireAPIBaseURLString = @"https://%@.campfirenow.c
  */
 
 - (void)getRoomWithID:(NSString*)roomID
-              success:(void (^)(AFHTTPRequestOperation *operation, IFToastingRoom *room))success
-              failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+              success:(void (^)(IFToastingRoom *room))success
+              failure:(void (^)(NSError *error))failure
 {
   NSString *path = [NSString stringWithFormat:@"room/%@.json", roomID];
   [self.apiClient getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id JSON) {
     IFToastingRoom *room = [[IFToastingRoom alloc] initWithAttributes:JSON[@"room"]];
-    success(operation, room);
+    success(room);
   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
     if (failure) {
-      failure(operation, error);
+      failure(error);
     }
   }];
 }
@@ -196,8 +204,8 @@ static NSString * const kDSCampfireAPIBaseURLString = @"https://%@.campfirenow.c
  */
 
 - (void)updateRoom:(NSString*)roomID name:(NSString*)name topic:(NSString*)topic
-            success:(void (^)(AFHTTPRequestOperation *operation))success
-            failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+            success:(void (^)())success
+            failure:(void (^)(NSError *error))failure
 {
   NSMutableDictionary *params = [NSMutableDictionary new];
   params[@"room"] = [NSMutableDictionary new];
@@ -213,7 +221,9 @@ static NSString * const kDSCampfireAPIBaseURLString = @"https://%@.campfirenow.c
   NSString *path = [NSString stringWithFormat:@"room/%@.json", roomID];
   [self.apiClient putPath:path parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
     success(operation);
-  } failure:failure];
+  } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    failure(error);
+  }];
 }
 
 /** 
@@ -221,13 +231,15 @@ static NSString * const kDSCampfireAPIBaseURLString = @"https://%@.campfirenow.c
  */
 
 - (void)joinRoom:(NSString*)roomID
-         success:(void (^)(AFHTTPRequestOperation *operation))success
-         failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+         success:(void (^)())success
+         failure:(void (^)(NSError *error))failure
 {
   NSString *path = [NSString stringWithFormat:@"room/%@/join.json", roomID];
   [self.apiClient postPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
     success(operation);
-  } failure:failure];
+  } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    failure(error);
+  }];
 }
 
 /** 
@@ -235,13 +247,15 @@ static NSString * const kDSCampfireAPIBaseURLString = @"https://%@.campfirenow.c
  */
 
 - (void)leaveRoom:(NSString*)roomID
-         success:(void (^)(AFHTTPRequestOperation *operation))success
-         failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+         success:(void (^)())success
+         failure:(void (^)(NSError *error))failure
 {
   NSString *path = [NSString stringWithFormat:@"room/%@/leave.json", roomID];
   [self.apiClient postPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
     success(operation);
-  } failure:failure];
+  } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    failure(error);
+  }];
 }
 
 /** 
@@ -249,13 +263,15 @@ static NSString * const kDSCampfireAPIBaseURLString = @"https://%@.campfirenow.c
  */
 
 - (void)lockRoom:(NSString*)roomID
-          success:(void (^)(AFHTTPRequestOperation *operation))success
-          failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+          success:(void (^)())success
+          failure:(void (^)(NSError *error))failure
 {
   NSString *path = [NSString stringWithFormat:@"room/%@/lock.json", roomID];
   [self.apiClient postPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
     success(operation);
-  } failure:failure];
+  } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    failure(error);
+  }];
 }
 
 /** 
@@ -263,13 +279,15 @@ static NSString * const kDSCampfireAPIBaseURLString = @"https://%@.campfirenow.c
  */
 
 - (void)unlockRoom:(NSString*)roomID
-         success:(void (^)(AFHTTPRequestOperation *operation))success
-         failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+         success:(void (^)())success
+         failure:(void (^)(NSError *error))failure
 {
   NSString *path = [NSString stringWithFormat:@"room/%@/unlock.json", roomID];
   [self.apiClient postPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
     success(operation);
-  } failure:failure];
+  } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    failure(error);
+  }];
 }
 
 ///-----------------------------------------------------------------------------
@@ -281,15 +299,17 @@ static NSString * const kDSCampfireAPIBaseURLString = @"https://%@.campfirenow.c
  */
 
 - (void)getMessagesIncludingSearchTerm:(NSString*)searchTerm
-                               success:(void (^)(AFHTTPRequestOperation *operation, NSArray *messages))success
-                               failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+                               success:(void (^)(NSArray *messages))success
+                               failure:(void (^)(NSError *error))failure
 {
   // GET /search?q=#{term}&format=xml same as above, but avoids issues with periods (".") in the term.
   NSString *path = [NSString stringWithFormat:@"search/%@.json", searchTerm];
   [self.apiClient getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, NSDictionary *JSON) {
     NSArray *messages = [self convertJsonToMessages:JSON];
-    success(operation, messages);
-  } failure:failure];
+    success(messages);
+  } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    failure(error);
+  }];
 }
 
 ///-----------------------------------------------------------------------------
@@ -301,8 +321,8 @@ static NSString * const kDSCampfireAPIBaseURLString = @"https://%@.campfirenow.c
  */
 
 - (void)createMessageWithBody:(NSString*)body type:(IFToastingMessageUserPostType)type room:(NSString*)roomID
-  success:(void (^)(AFHTTPRequestOperation *operation, IFToastingMessage *message))success
-  failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+  success:(void (^)(IFToastingMessage *message))success
+  failure:(void (^)(NSError *error))failure
 {
   assert(type != IFToastingMessageTypeUpload);
 
@@ -316,10 +336,10 @@ static NSString * const kDSCampfireAPIBaseURLString = @"https://%@.campfirenow.c
   NSString *path = [NSString stringWithFormat:@"room/%@/speak.json", roomID];
   [self.apiClient postPath:path parameters:params success:^(AFHTTPRequestOperation *operation, id JSON) {
     IFToastingMessage *message = [[IFToastingMessage alloc] initWithAttributes:JSON[@"message"]];
-    success(operation, message);
+    success(message);
 
   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-    failure(operation, error);
+    failure(error);
   }];
 }
 
@@ -328,14 +348,16 @@ static NSString * const kDSCampfireAPIBaseURLString = @"https://%@.campfirenow.c
 */
 
 - (void)getRecentMessagesForRoom:(NSString*)roomID
-  success:(void (^)(AFHTTPRequestOperation *operation, NSArray *messages))success
-  failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+  success:(void (^)(NSArray *messages))success
+  failure:(void (^)(NSError *error))failure
 {
   NSString *path = [NSString stringWithFormat:@"room/%@/recent.json", roomID];
   [self.apiClient getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, NSDictionary *JSON) {
     NSArray *messages = [self convertJsonToMessages:JSON];
-    success(operation, messages);
-  } failure:failure];
+    success(messages);
+  } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    failure(error);
+  }];
 }
 
 /** 
@@ -343,13 +365,15 @@ static NSString * const kDSCampfireAPIBaseURLString = @"https://%@.campfirenow.c
 */
 
 - (void)highlightMessage:(NSString*)messageID
-         success:(void (^)(AFHTTPRequestOperation *operation))success
-         failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+         success:(void (^)())success
+         failure:(void (^)(NSError *error))failure
 {
   NSString *path = [NSString stringWithFormat:@"messages/%@/star.json", messageID];
   [self.apiClient postPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
     success(operation);
-  } failure:failure];
+  } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    failure(error);
+  }];
 }
 
 /** 
@@ -357,13 +381,15 @@ static NSString * const kDSCampfireAPIBaseURLString = @"https://%@.campfirenow.c
 */
 
 - (void)unhighlightMessage:(NSString*)messageID
-                 success:(void (^)(AFHTTPRequestOperation *operation))success
-                 failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+                 success:(void (^)())success
+                 failure:(void (^)(NSError *error))failure
 {
   NSString *path = [NSString stringWithFormat:@"messages/%@/star.json", messageID];
   [self.apiClient deletePath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
     success(operation);
-  } failure:failure];
+  } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    failure(error);
+  }];
 }
 
 ///-----------------------------------------------------------------------------
@@ -375,15 +401,17 @@ static NSString * const kDSCampfireAPIBaseURLString = @"https://%@.campfirenow.c
 */
 
 - (void)getTodayMessagesForRoom:(NSString*)roomID
-  success:(void (^)(AFHTTPRequestOperation *operation, NSArray *messages))success
-  failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+  success:(void (^)(NSArray *messages))success
+  failure:(void (^)(NSError *error))failure
 {
   NSString *path = [NSString stringWithFormat:@"room/%@/transcript.json", roomID];
   [self.apiClient getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, NSDictionary *JSON) {
     NSArray *messages = [self convertJsonToMessages:JSON];
 //    [[NSNotificationCenter defaultCenter] postNotificationName:@"notification" object:self userInfo:@{ @"key" : @"doc" }];
-    success(operation, messages);
-  } failure:failure];
+    success(messages);
+  } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    failure(error);
+  }];
 }
 
 /** 
@@ -394,15 +422,17 @@ static NSString * const kDSCampfireAPIBaseURLString = @"https://%@.campfirenow.c
                       year:(NSString*)year
                      month:(NSString*)month
                        day:(NSString*)day
-                   success:(void (^)(AFHTTPRequestOperation *operation, NSArray *messages))success
-                   failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+                   success:(void (^)(NSArray *messages))success
+                   failure:(void (^)(NSError *error))failure
 {
   NSString *date_url = [NSString stringWithFormat:@"%@/%@/%@", year, month, day];
   NSString *path = [NSString stringWithFormat:@"room/%@/transcript/%@.json", roomID, date_url];
   [self.apiClient getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, NSDictionary *JSON) {
     NSArray *messages = [self convertJsonToMessages:JSON];
-    success(operation, messages);
-  } failure:failure];
+    success(messages);
+  } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    failure(error);
+  }];
 }
 
 
@@ -415,27 +445,31 @@ static NSString * const kDSCampfireAPIBaseURLString = @"https://%@.campfirenow.c
 */
 
 - (void)getUserWithID:(NSString*)userID
-              success:(void (^)(AFHTTPRequestOperation *operation, IFToastingUser *user))success
-              failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+              success:(void (^)(IFToastingUser *user))success
+              failure:(void (^)(NSError *error))failure
 {
   NSString *path = [NSString stringWithFormat:@"users/%@.json", userID];
   [self.apiClient getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id JSON) {
     IFToastingUser *user = [[IFToastingUser alloc] initWithAttributes:JSON[@"user"]];
-    success(operation, user);
-  } failure:failure];
+    success(user);
+  } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    failure(error);
+  }];
 }
 
 /** 
  Returns the user making the API request.
 */
 
-- (void)getSelfWithSuccess:(void (^)(AFHTTPRequestOperation *operation, IFToastingUser *user))success
-  failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+- (void)getSelfWithSuccess:(void (^)(IFToastingUser *user))success
+  failure:(void (^)(NSError *error))failure
 {
   [self.apiClient getPath:@"users/me.json" parameters:nil success:^(AFHTTPRequestOperation *operation, id JSON) {
     IFToastingUser *user = [[IFToastingUser alloc] initWithAttributes:JSON[@"user"]];
-    success(operation, user);
-  } failure:failure];
+    success(user);
+  } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    failure(error);
+  }];
 }
 
 ///-----------------------------------------------------------------------------
@@ -448,21 +482,25 @@ static NSString * const kDSCampfireAPIBaseURLString = @"https://%@.campfirenow.c
 
 - (void)createUploadForRoomWithID:(NSString*)roomID
                           fileURL:(NSURL*)fileURL
-                          success:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, IFToastingUpload *upload))success
-                          failure:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON))failure
+                          success:(void (^)(IFToastingUpload *upload))success
+                          failure:(void (^)(NSError *error))failure
 {
   NSString *path = [NSString stringWithFormat:@"room/%@/uploads.json", roomID];
+
   NSURLRequest *request = [self.apiClient multipartFormRequestWithMethod:@"POST" path:path parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
     NSError *error;
     BOOL result = [formData appendPartWithFileURL:fileURL name:@"upload" error:&error];
     if (!result) {
-      failure(nil, nil, error, nil);
+      failure(error);
     }
   }];
+
   [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *json_request, NSHTTPURLResponse *response, id JSON) {
     IFToastingUpload *upload = [[IFToastingUpload alloc] initWithAttributes:JSON[@"upload"]];
-    success(json_request, response, upload);
-  } failure:failure];
+    success(upload);
+  } failure:^(NSURLRequest *j_request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+    failure(error);
+  }];
 }
 
 /** 
@@ -470,14 +508,16 @@ static NSString * const kDSCampfireAPIBaseURLString = @"https://%@.campfirenow.c
  */
 
 - (void)getUploadsForRoomWithID:(NSString*)roomID
-  success:(void (^)(AFHTTPRequestOperation *operation, NSArray *uploads))success
-  failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+  success:(void (^)(NSArray *uploads))success
+  failure:(void (^)(NSError *error))failure
 {
   NSString *path = [NSString stringWithFormat:@"room/%@/uploads.json", roomID];
   [self.apiClient getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, NSDictionary *JSON) {
     NSArray *messages = [self convertJsonToUploads:JSON];
-    success(operation, messages);
-  } failure:failure];
+    success(messages);
+  } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    failure(error);
+  }];
 }
 
 /** 
@@ -486,14 +526,16 @@ static NSString * const kDSCampfireAPIBaseURLString = @"https://%@.campfirenow.c
 
 - (void)getUploadForRoomWithID:(NSString*)roomID
                uploadMessageID:(NSString*)uploadMessageID
-  success:(void (^)(AFHTTPRequestOperation *operation, IFToastingUpload *upload))success
-  failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+  success:(void (^)(IFToastingUpload *upload))success
+  failure:(void (^)(NSError *error))failure
 {
   NSString *path = [NSString stringWithFormat:@"room/%@/messages/%@/upload.json", roomID, uploadMessageID];
   [self.apiClient getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id JSON) {
     IFToastingUpload *upload = [[IFToastingUpload alloc] initWithAttributes:JSON[@"upload"]];
-    success(operation, upload);
-  } failure:failure];
+    success(upload);
+  } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    failure(error);
+  }];
 }
 
 ///-----------------------------------------------------------------------------
