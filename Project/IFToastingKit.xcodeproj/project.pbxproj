@@ -1,0 +1,604 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		812CA4299F7D471FA2440FFC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03BE5A0DD7544E158D71D313 /* libPods.a */; };
+		E52DE687170EF2CA0078F8AA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E52DE686170EF2CA0078F8AA /* Cocoa.framework */; };
+		E52DE6A5170EF2CB0078F8AA /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E52DE6A4170EF2CB0078F8AA /* SenTestingKit.framework */; };
+		E52DE6A6170EF2CB0078F8AA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E52DE686170EF2CA0078F8AA /* Cocoa.framework */; };
+		E52DE6AE170EF2CB0078F8AA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E52DE6AC170EF2CB0078F8AA /* InfoPlist.strings */; };
+		E52DE6B1170EF2CB0078F8AA /* IFToastingKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E52DE6B0170EF2CB0078F8AA /* IFToastingKitTests.m */; };
+		E52DE6C8170EF4060078F8AA /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E52DE6BF170EF4060078F8AA /* MainMenu.xib */; };
+		E52DE6C9170EF4060078F8AA /* IFAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E52DE6C2170EF4060078F8AA /* IFAppDelegate.m */; };
+		E52DE6CB170EF4060078F8AA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E52DE6C5170EF4060078F8AA /* main.m */; };
+		E5AC25E4170EFF9600A84B20 /* IFToastingAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = E5AC25CF170EFF9600A84B20 /* IFToastingAPIClient.m */; };
+		E5AC25E5170EFF9600A84B20 /* IFToastingRoomStreamClient.m in Sources */ = {isa = PBXBuildFile; fileRef = E5AC25D1170EFF9600A84B20 /* IFToastingRoomStreamClient.m */; };
+		E5AC25E6170EFF9600A84B20 /* IFToastingKit.m in Sources */ = {isa = PBXBuildFile; fileRef = E5AC25D3170EFF9600A84B20 /* IFToastingKit.m */; };
+		E5AC25E7170EFF9600A84B20 /* IFModelCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = E5AC25D7170EFF9600A84B20 /* IFModelCategories.m */; };
+		E5AC25E8170EFF9600A84B20 /* IFToastingAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = E5AC25D9170EFF9600A84B20 /* IFToastingAccount.m */; };
+		E5AC25E9170EFF9600A84B20 /* IFToastingMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = E5AC25DB170EFF9600A84B20 /* IFToastingMessage.m */; };
+		E5AC25EA170EFF9600A84B20 /* IFToastingRoom.m in Sources */ = {isa = PBXBuildFile; fileRef = E5AC25DD170EFF9600A84B20 /* IFToastingRoom.m */; };
+		E5AC25EB170EFF9600A84B20 /* IFToastingTweetDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = E5AC25DF170EFF9600A84B20 /* IFToastingTweetDescription.m */; };
+		E5AC25EC170EFF9600A84B20 /* IFToastingUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = E5AC25E1170EFF9600A84B20 /* IFToastingUpload.m */; };
+		E5AC25ED170EFF9600A84B20 /* IFToastingUser.m in Sources */ = {isa = PBXBuildFile; fileRef = E5AC25E3170EFF9600A84B20 /* IFToastingUser.m */; };
+		E5AC25EF170F08B500A84B20 /* IFToastingKit.podspec in Resources */ = {isa = PBXBuildFile; fileRef = E5AC25EE170F08B500A84B20 /* IFToastingKit.podspec */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E52DE6A7170EF2CB0078F8AA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E52DE67B170EF2CA0078F8AA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E52DE682170EF2CA0078F8AA;
+			remoteInfo = IFToastingKit;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		03BE5A0DD7544E158D71D313 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C1BEEC4F83284665AE771925 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		E52DE683170EF2CA0078F8AA /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E52DE686170EF2CA0078F8AA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		E52DE689170EF2CA0078F8AA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		E52DE68A170EF2CA0078F8AA /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		E52DE68B170EF2CA0078F8AA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		E52DE6A3170EF2CB0078F8AA /* IFToastingKitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IFToastingKitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E52DE6A4170EF2CB0078F8AA /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		E52DE6AB170EF2CB0078F8AA /* IFToastingKitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "IFToastingKitTests-Info.plist"; sourceTree = "<group>"; };
+		E52DE6AD170EF2CB0078F8AA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E52DE6AF170EF2CB0078F8AA /* IFToastingKitTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IFToastingKitTests.h; sourceTree = "<group>"; };
+		E52DE6B0170EF2CB0078F8AA /* IFToastingKitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IFToastingKitTests.m; sourceTree = "<group>"; };
+		E52DE6BE170EF4060078F8AA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E52DE6C0170EF4060078F8AA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		E52DE6C1170EF4060078F8AA /* IFAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFAppDelegate.h; sourceTree = "<group>"; };
+		E52DE6C2170EF4060078F8AA /* IFAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IFAppDelegate.m; sourceTree = "<group>"; };
+		E52DE6C3170EF4060078F8AA /* IFToastingKit-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "IFToastingKit-Info.plist"; sourceTree = "<group>"; };
+		E52DE6C4170EF4060078F8AA /* IFToastingKit-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IFToastingKit-Prefix.pch"; sourceTree = "<group>"; };
+		E52DE6C5170EF4060078F8AA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E5AC25CE170EFF9600A84B20 /* IFToastingAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFToastingAPIClient.h; sourceTree = "<group>"; };
+		E5AC25CF170EFF9600A84B20 /* IFToastingAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IFToastingAPIClient.m; sourceTree = "<group>"; };
+		E5AC25D0170EFF9600A84B20 /* IFToastingRoomStreamClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFToastingRoomStreamClient.h; sourceTree = "<group>"; };
+		E5AC25D1170EFF9600A84B20 /* IFToastingRoomStreamClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IFToastingRoomStreamClient.m; sourceTree = "<group>"; };
+		E5AC25D2170EFF9600A84B20 /* IFToastingKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFToastingKit.h; sourceTree = "<group>"; };
+		E5AC25D3170EFF9600A84B20 /* IFToastingKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IFToastingKit.m; sourceTree = "<group>"; };
+		E5AC25D6170EFF9600A84B20 /* IFModelCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFModelCategories.h; sourceTree = "<group>"; };
+		E5AC25D7170EFF9600A84B20 /* IFModelCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IFModelCategories.m; sourceTree = "<group>"; };
+		E5AC25D8170EFF9600A84B20 /* IFToastingAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFToastingAccount.h; sourceTree = "<group>"; };
+		E5AC25D9170EFF9600A84B20 /* IFToastingAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IFToastingAccount.m; sourceTree = "<group>"; };
+		E5AC25DA170EFF9600A84B20 /* IFToastingMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFToastingMessage.h; sourceTree = "<group>"; };
+		E5AC25DB170EFF9600A84B20 /* IFToastingMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IFToastingMessage.m; sourceTree = "<group>"; };
+		E5AC25DC170EFF9600A84B20 /* IFToastingRoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFToastingRoom.h; sourceTree = "<group>"; };
+		E5AC25DD170EFF9600A84B20 /* IFToastingRoom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IFToastingRoom.m; sourceTree = "<group>"; };
+		E5AC25DE170EFF9600A84B20 /* IFToastingTweetDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFToastingTweetDescription.h; sourceTree = "<group>"; };
+		E5AC25DF170EFF9600A84B20 /* IFToastingTweetDescription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IFToastingTweetDescription.m; sourceTree = "<group>"; };
+		E5AC25E0170EFF9600A84B20 /* IFToastingUpload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFToastingUpload.h; sourceTree = "<group>"; };
+		E5AC25E1170EFF9600A84B20 /* IFToastingUpload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IFToastingUpload.m; sourceTree = "<group>"; };
+		E5AC25E2170EFF9600A84B20 /* IFToastingUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFToastingUser.h; sourceTree = "<group>"; };
+		E5AC25E3170EFF9600A84B20 /* IFToastingUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IFToastingUser.m; sourceTree = "<group>"; };
+		E5AC25EE170F08B500A84B20 /* IFToastingKit.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = IFToastingKit.podspec; path = ../IFToastingKit.podspec; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E52DE680170EF2CA0078F8AA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E52DE687170EF2CA0078F8AA /* Cocoa.framework in Frameworks */,
+				812CA4299F7D471FA2440FFC /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E52DE69F170EF2CB0078F8AA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E52DE6A5170EF2CB0078F8AA /* SenTestingKit.framework in Frameworks */,
+				E52DE6A6170EF2CB0078F8AA /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E52DE67A170EF2CA0078F8AA = {
+			isa = PBXGroup;
+			children = (
+				E5AC25EE170F08B500A84B20 /* IFToastingKit.podspec */,
+				E5AC25CC170EFF9600A84B20 /* Classes */,
+				E52DE6BA170EF4060078F8AA /* Demo */,
+				E52DE6A9170EF2CB0078F8AA /* IFToastingKitTests */,
+				E52DE685170EF2CA0078F8AA /* Frameworks */,
+				E52DE684170EF2CA0078F8AA /* Products */,
+				C1BEEC4F83284665AE771925 /* Pods.xcconfig */,
+			);
+			indentWidth = 2;
+			sourceTree = "<group>";
+			tabWidth = 2;
+			usesTabs = 0;
+		};
+		E52DE684170EF2CA0078F8AA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E52DE683170EF2CA0078F8AA /* Demo.app */,
+				E52DE6A3170EF2CB0078F8AA /* IFToastingKitTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E52DE685170EF2CA0078F8AA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E52DE686170EF2CA0078F8AA /* Cocoa.framework */,
+				E52DE6A4170EF2CB0078F8AA /* SenTestingKit.framework */,
+				E52DE688170EF2CA0078F8AA /* Other Frameworks */,
+				03BE5A0DD7544E158D71D313 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E52DE688170EF2CA0078F8AA /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E52DE689170EF2CA0078F8AA /* AppKit.framework */,
+				E52DE68A170EF2CA0078F8AA /* CoreData.framework */,
+				E52DE68B170EF2CA0078F8AA /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		E52DE6A9170EF2CB0078F8AA /* IFToastingKitTests */ = {
+			isa = PBXGroup;
+			children = (
+				E52DE6AF170EF2CB0078F8AA /* IFToastingKitTests.h */,
+				E52DE6B0170EF2CB0078F8AA /* IFToastingKitTests.m */,
+				E52DE6AA170EF2CB0078F8AA /* Supporting Files */,
+			);
+			path = IFToastingKitTests;
+			sourceTree = "<group>";
+		};
+		E52DE6AA170EF2CB0078F8AA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E52DE6AB170EF2CB0078F8AA /* IFToastingKitTests-Info.plist */,
+				E52DE6AC170EF2CB0078F8AA /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E52DE6BA170EF4060078F8AA /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				E52DE6BD170EF4060078F8AA /* InfoPlist.strings */,
+				E52DE6BF170EF4060078F8AA /* MainMenu.xib */,
+				E52DE6C1170EF4060078F8AA /* IFAppDelegate.h */,
+				E52DE6C2170EF4060078F8AA /* IFAppDelegate.m */,
+				E52DE6C3170EF4060078F8AA /* IFToastingKit-Info.plist */,
+				E52DE6C4170EF4060078F8AA /* IFToastingKit-Prefix.pch */,
+				E52DE6C5170EF4060078F8AA /* main.m */,
+			);
+			path = Demo;
+			sourceTree = "<group>";
+		};
+		E5AC25CC170EFF9600A84B20 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				E5AC25D2170EFF9600A84B20 /* IFToastingKit.h */,
+				E5AC25D3170EFF9600A84B20 /* IFToastingKit.m */,
+				E5AC25CD170EFF9600A84B20 /* Clients */,
+				E5AC25D5170EFF9600A84B20 /* Models */,
+			);
+			name = Classes;
+			path = ../Classes;
+			sourceTree = "<group>";
+		};
+		E5AC25CD170EFF9600A84B20 /* Clients */ = {
+			isa = PBXGroup;
+			children = (
+				E5AC25CE170EFF9600A84B20 /* IFToastingAPIClient.h */,
+				E5AC25CF170EFF9600A84B20 /* IFToastingAPIClient.m */,
+				E5AC25D0170EFF9600A84B20 /* IFToastingRoomStreamClient.h */,
+				E5AC25D1170EFF9600A84B20 /* IFToastingRoomStreamClient.m */,
+			);
+			path = Clients;
+			sourceTree = "<group>";
+		};
+		E5AC25D5170EFF9600A84B20 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E5AC25D6170EFF9600A84B20 /* IFModelCategories.h */,
+				E5AC25D7170EFF9600A84B20 /* IFModelCategories.m */,
+				E5AC25D8170EFF9600A84B20 /* IFToastingAccount.h */,
+				E5AC25D9170EFF9600A84B20 /* IFToastingAccount.m */,
+				E5AC25DA170EFF9600A84B20 /* IFToastingMessage.h */,
+				E5AC25DB170EFF9600A84B20 /* IFToastingMessage.m */,
+				E5AC25DC170EFF9600A84B20 /* IFToastingRoom.h */,
+				E5AC25DD170EFF9600A84B20 /* IFToastingRoom.m */,
+				E5AC25DE170EFF9600A84B20 /* IFToastingTweetDescription.h */,
+				E5AC25DF170EFF9600A84B20 /* IFToastingTweetDescription.m */,
+				E5AC25E0170EFF9600A84B20 /* IFToastingUpload.h */,
+				E5AC25E1170EFF9600A84B20 /* IFToastingUpload.m */,
+				E5AC25E2170EFF9600A84B20 /* IFToastingUser.h */,
+				E5AC25E3170EFF9600A84B20 /* IFToastingUser.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E52DE682170EF2CA0078F8AA /* Demo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E52DE6B4170EF2CB0078F8AA /* Build configuration list for PBXNativeTarget "Demo" */;
+			buildPhases = (
+				E52DE67F170EF2CA0078F8AA /* Sources */,
+				E52DE680170EF2CA0078F8AA /* Frameworks */,
+				E52DE681170EF2CA0078F8AA /* Resources */,
+				2828EAD6DB464CAD8C58C21C /* Warn for TODO and FIXME comments */,
+				F28A5B0A4CFE47B491EA62E7 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Demo;
+			productName = IFToastingKit;
+			productReference = E52DE683170EF2CA0078F8AA /* Demo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E52DE6A2170EF2CB0078F8AA /* IFToastingKitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E52DE6B7170EF2CB0078F8AA /* Build configuration list for PBXNativeTarget "IFToastingKitTests" */;
+			buildPhases = (
+				E52DE69E170EF2CB0078F8AA /* Sources */,
+				E52DE69F170EF2CB0078F8AA /* Frameworks */,
+				E52DE6A0170EF2CB0078F8AA /* Resources */,
+				E52DE6A1170EF2CB0078F8AA /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E52DE6A8170EF2CB0078F8AA /* PBXTargetDependency */,
+			);
+			name = IFToastingKitTests;
+			productName = IFToastingKitTests;
+			productReference = E52DE6A3170EF2CB0078F8AA /* IFToastingKitTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E52DE67B170EF2CA0078F8AA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = IF;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Fabio Angelog Pelosin";
+			};
+			buildConfigurationList = E52DE67E170EF2CA0078F8AA /* Build configuration list for PBXProject "IFToastingKit" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = E52DE67A170EF2CA0078F8AA;
+			productRefGroup = E52DE684170EF2CA0078F8AA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E52DE682170EF2CA0078F8AA /* Demo */,
+				E52DE6A2170EF2CB0078F8AA /* IFToastingKitTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E52DE681170EF2CA0078F8AA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E52DE6C8170EF4060078F8AA /* MainMenu.xib in Resources */,
+				E5AC25EF170F08B500A84B20 /* IFToastingKit.podspec in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E52DE6A0170EF2CB0078F8AA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E52DE6AE170EF2CB0078F8AA /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2828EAD6DB464CAD8C58C21C /* Warn for TODO and FIXME comments */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Warn for TODO and FIXME comments";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "KEYWORDS=\"TODO:|FIXME:|\\?\\?\\?:|\\!\\!\\!:\"\nFILE_EXTENSIONS=\"h|m|mm|c|cpp\"\nfind -E \"${SRCROOT}/..\" -ipath \"${SRCROOT}/pods\" -prune -o \\( -regex \".*\\.($FILE_EXTENSIONS)$\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($KEYWORDS).*\\$\" | perl -p -e \"s/($KEYWORDS)/ warning: \\$1/\"\n";
+		};
+		E52DE6A1170EF2CB0078F8AA /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+		F28A5B0A4CFE47B491EA62E7 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E52DE67F170EF2CA0078F8AA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E52DE6C9170EF4060078F8AA /* IFAppDelegate.m in Sources */,
+				E52DE6CB170EF4060078F8AA /* main.m in Sources */,
+				E5AC25E4170EFF9600A84B20 /* IFToastingAPIClient.m in Sources */,
+				E5AC25E5170EFF9600A84B20 /* IFToastingRoomStreamClient.m in Sources */,
+				E5AC25E6170EFF9600A84B20 /* IFToastingKit.m in Sources */,
+				E5AC25E7170EFF9600A84B20 /* IFModelCategories.m in Sources */,
+				E5AC25E8170EFF9600A84B20 /* IFToastingAccount.m in Sources */,
+				E5AC25E9170EFF9600A84B20 /* IFToastingMessage.m in Sources */,
+				E5AC25EA170EFF9600A84B20 /* IFToastingRoom.m in Sources */,
+				E5AC25EB170EFF9600A84B20 /* IFToastingTweetDescription.m in Sources */,
+				E5AC25EC170EFF9600A84B20 /* IFToastingUpload.m in Sources */,
+				E5AC25ED170EFF9600A84B20 /* IFToastingUser.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E52DE69E170EF2CB0078F8AA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E52DE6B1170EF2CB0078F8AA /* IFToastingKitTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E52DE6A8170EF2CB0078F8AA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E52DE682170EF2CA0078F8AA /* Demo */;
+			targetProxy = E52DE6A7170EF2CB0078F8AA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		E52DE6AC170EF2CB0078F8AA /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E52DE6AD170EF2CB0078F8AA /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		E52DE6BD170EF4060078F8AA /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E52DE6BE170EF4060078F8AA /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		E52DE6BF170EF4060078F8AA /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E52DE6C0170EF4060078F8AA /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E52DE6B2170EF2CB0078F8AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_MISSING_PARENTHESES = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_VALUE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				RUN_CLANG_STATIC_ANALYZER = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		E52DE6B3170EF2CB0078F8AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_MISSING_PARENTHESES = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_VALUE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				RUN_CLANG_STATIC_ANALYZER = YES;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		E52DE6B5170EF2CB0078F8AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C1BEEC4F83284665AE771925 /* Pods.xcconfig */;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Demo/IFToastingKit-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/Demo/IFToastingKit-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		E52DE6B6170EF2CB0078F8AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C1BEEC4F83284665AE771925 /* Pods.xcconfig */;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Demo/IFToastingKit-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/Demo/IFToastingKit-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		E52DE6B8170EF2CB0078F8AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/IFToastingKit.app/Contents/MacOS/IFToastingKit";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "IFToastingKit/IFToastingKit-Prefix.pch";
+				INFOPLIST_FILE = "IFToastingKitTests/IFToastingKitTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		E52DE6B9170EF2CB0078F8AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/IFToastingKit.app/Contents/MacOS/IFToastingKit";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "IFToastingKit/IFToastingKit-Prefix.pch";
+				INFOPLIST_FILE = "IFToastingKitTests/IFToastingKitTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E52DE67E170EF2CA0078F8AA /* Build configuration list for PBXProject "IFToastingKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E52DE6B2170EF2CB0078F8AA /* Debug */,
+				E52DE6B3170EF2CB0078F8AA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E52DE6B4170EF2CB0078F8AA /* Build configuration list for PBXNativeTarget "Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E52DE6B5170EF2CB0078F8AA /* Debug */,
+				E52DE6B6170EF2CB0078F8AA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E52DE6B7170EF2CB0078F8AA /* Build configuration list for PBXNativeTarget "IFToastingKitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E52DE6B8170EF2CB0078F8AA /* Debug */,
+				E52DE6B9170EF2CB0078F8AA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E52DE67B170EF2CA0078F8AA /* Project object */;
+}

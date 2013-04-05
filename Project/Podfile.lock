@@ -1,0 +1,13 @@
+PODS:
+  - AFNetworking (1.2.0)
+  - SBJson (3.2)
+
+DEPENDENCIES:
+  - AFNetworking
+  - SBJson
+
+SPEC CHECKSUMS:
+  AFNetworking: 3cbae45f61a9f995cdbd56bd571223910d7f4e44
+  SBJson: 4971016670e7b3fa04a36d4e72ab0fb1ad3a9f69
+
+COCOAPODS: 0.17.2
